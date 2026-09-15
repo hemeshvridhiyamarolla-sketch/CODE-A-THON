@@ -1,0 +1,47 @@
+Alex Morgan
+Email: alex.morgan.dev@email.com | Phone: (555) 382-9102
+GitHub: github.com/alexmorgan-dev | LinkedIn: linkedin.com/in/alexmorgan-dev
+Location: Seattle, WA
+
+PROFESSIONAL SUMMARY
+Motivated Software Developer with strong foundational expertise in Python, RESTful API engineering, and relational database management. Experienced in building full-stack web applications and micro-services using Flask, SQL, and modern web standards. Passionate about writing clean, maintainable backend code and optimizing query execution.
+
+TECHNICAL SKILLS
+- Programming Languages: Python, JavaScript, HTML5, CSS3, SQL
+- Frameworks & Libraries: Flask, Jinja2, SQLAlchemy, jQuery
+- Databases: PostgreSQL, SQLite, MySQL
+- Development Tools: Git, GitHub, Postman, VS Code, Linux/Bash
+- Methodologies: Agile/Scrum, RESTful Architecture, Unit Testing (unittest, pytest)
+
+KEY PROJECTS
+
+1. Campus Market - API-Based Web Application (Python, Flask, PostgreSQL)
+- Designed and built a modular REST API backend using Python and Flask supporting user authentication, product listings, and order workflows.
+- Implemented relational database schemas in PostgreSQL with indexed foreign keys, handling over 2,500 test transactions with sub-100ms response times.
+- Integrated JWT-based stateless session management and input validation with comprehensive unit tests achieving 85% code coverage.
+- Created responsive frontend views using HTML5, CSS3, and JavaScript fetch API.
+
+2. Automated Event Notification Service (Python, REST APIs, SQLite)
+- Engineered a lightweight asynchronous polling micro-service that consumes external third-party REST APIs and dispatches webhook alerts.
+- Optimized SQL queries and database indexes, reducing disk read latency by 35%.
+- Implemented structured logging, error-handling middleware, and automated payload parsing.
+
+3. College Academic Portal (Python, Flask, HTML/CSS)
+- Developed a student grade tracking and schedule planner used by 300+ university peers.
+- Built clean, responsive interfaces with custom CSS and modular Jinja2 templates.
+- Utilized Git for version control and pull request reviews following PEP8 standards.
+
+WORK EXPERIENCE
+
+Software Engineering Intern | Peak Technologies
+June 2024 – September 2024
+- Collaborated with senior engineers to implement and test backend REST endpoints in Python.
+- Wrote automated test suites in pytest, identifying and resolving 18 edge-case bugs prior to production release.
+- Participated in weekly sprint reviews, code refactoring sessions, and technical documentation.
+
+EDUCATION
+
+Bachelor of Science in Computer Science
+State University of Technology | Graduated: May 2025
+- GPA: 3.8 / 4.0
+- Relevant Coursework: Data Structures & Algorithms, Database Management Systems, Web Development, Software Engineering Principles, Computer Networks.

@@ -1,0 +1,30 @@
+Role: Python Backend Developer
+Company: CloudScale Solutions
+Location: Remote / Hybrid (Seattle, WA)
+Employment Type: Full-time
+
+ABOUT THE ROLE:
+CloudScale Solutions is seeking a talented Python Backend Developer to join our core platform engineering team. In this role, you will architect high-performance web services, design scalable database schemas, and deploy microservices powering our customer analytics engine.
+
+RESPONSIBILITIES:
+- Architect and maintain enterprise-grade web applications and REST APIs using Python and Django.
+- Design, optimize, and maintain relational databases (PostgreSQL/SQL), writing efficient queries and database migrations.
+- Containerize services using Docker and Docker Compose for seamless local development and production orchestration.
+- Deploy, monitor, and scale backend services on Amazon Web Services (AWS) using EC2, ECS, and S3.
+- Collaborate with frontend engineers, product managers, and QA in an agile environment.
+- Champion code quality through rigorous peer code reviews, unit testing, and continuous integration (Git / GitHub Actions).
+
+REQUIRED QUALIFICATIONS:
+- Proficiency in Python programming with a solid grasp of object-oriented concepts and clean architecture.
+- Demonstrated hands-on experience developing RESTful APIs and backend web services.
+- Practical experience with Django or similar enterprise Python web frameworks.
+- Strong knowledge of SQL and relational database systems (PostgreSQL, MySQL).
+- Experience with Docker containerization and creating reproducible environments.
+- Familiarity with Cloud infrastructure on AWS (EC2, ECS, S3, or Lambda).
+- Proficient with Git version control and collaborative GitHub workflows.
+- Bachelor's degree in Computer Science, Software Engineering, or equivalent practical experience.
+
+PREFERRED QUALIFICATIONS:
+- Experience with asynchronous task queues (Celery, Redis).
+- Knowledge of automated CI/CD pipelines (GitHub Actions).
+- Exposure to microservices architecture and API security standards.

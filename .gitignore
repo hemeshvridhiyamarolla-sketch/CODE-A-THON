@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Environment Variables (Secrets)
+.env
+
+# Uploads temporary files
+uploads/*
+!uploads/.gitkeep
+
+# Temporary office/editor lock files
+~$*
+.~*
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

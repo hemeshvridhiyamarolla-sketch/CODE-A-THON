@@ -1,0 +1,3 @@
+"""
+HireMind AI Services Package
+"""

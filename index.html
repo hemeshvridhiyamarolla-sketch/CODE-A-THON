@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hire Me - Agentic Resume Intelligence & Career Matching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Top Navigation Header -->
+    <header class="navbar glass-panel">
+      <div class="brand-group">
+        <div class="brand-logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title-row">
+            <h1 class="brand-title">HIRE <span class="gradient-text">ME</span></h1>
+            <span class="chip chip-agent">Agentic Resume Intelligence</span>
+          </div>
+          <p class="brand-subtitle">Understand your fit. Discover your gaps. Prepare for your next opportunity.</p>
+        </div>
+      </div>
+
+      <div class="nav-controls">
+        <div class="status-indicator-pill" id="aiStatusPill" title="AI Engine status">
+          <span class="pulse-dot"></span>
+          <span id="aiStatusText">AI Ready</span>
+        </div>
+        <button id="quickDemoBtn" class="btn btn-secondary btn-sm" title="Populate realistic sample candidate and job">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          Quick Demo
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Mode Tabs -->
+    <div class="tabs-nav-wrapper">
+      <div class="mode-tabs glass-panel-sm">
+        <button class="mode-tab active" data-tab="candidate-mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Candidate Match & Roadmap
+        </button>
+        <button class="mode-tab" data-tab="recruiter-mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Recruiter Batch Ranking
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN TAB 1: CANDIDATE MATCHING -->
+    <main id="candidateModeSection" class="tab-content active">
+      
+      <!-- Input Section (Two-Column Glass Grid) -->
+      <section class="input-section grid-2-col">
+        
+        <!-- Left: Resume Upload Card -->
+        <div class="card glass-card input-card">
+          <div class="card-header">
+            <div class="card-icon-title">
+              <span class="icon-bubble">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </span>
+              <div>
+                <h2>1. Candidate Resume</h2>
+                <span class="card-desc">PDF or DOCX document</span>
+              </div>
+            </div>
+            <button type="button" class="btn-text" id="togglePasteResumeBtn">or paste text</button>
+          </div>
+
+          <div class="card-body">
+            <!-- Dropzone -->
+            <div class="dropzone" id="resumeDropzone">
+              <input type="file" id="resumeFileInput" accept=".pdf,.docx,.txt" class="file-input-hidden">
+              <div class="dropzone-content">
+                <div class="dropzone-icon">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                </div>
+                <div class="dropzone-text">
+                  <p class="primary-prompt"><span class="link-styled">Click to upload</span> or drag and drop</p>
+                  <p class="secondary-prompt">Supports PDF, Word (.docx), or plain text</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Uploaded File Badge Preview -->
+            <div id="filePreviewContainer" class="file-preview-card hidden">
+              <div class="file-preview-info">
+                <span class="file-icon">📄</span>
+                <div>
+                  <p id="previewFileName" class="file-name">resume.pdf</p>
+                  <p id="previewFileSize" class="file-size">145 KB</p>
+                </div>
+              </div>
+              <button type="button" id="removeFileBtn" class="btn-icon" title="Remove file">✕</button>
+            </div>
+
+            <!-- Optional Paste Resume Text Box -->
+            <div id="pasteResumeContainer" class="paste-container hidden">
+              <label for="pastedResumeText" class="input-label">Resume Text Content</label>
+              <textarea id="pastedResumeText" rows="6" class="code-textarea" placeholder="Paste full resume text here (Summary, Skills, Experience, Projects, Education)..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Job Description Card -->
+        <div class="card glass-card input-card">
+          <div class="card-header">
+            <div class="card-icon-title">
+              <span class="icon-bubble bubble-purple">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              </span>
+              <div>
+                <h2>2. Target Job Description</h2>
+                <span class="card-desc">Requirements, stack, and responsibilities</span>
+              </div>
+            </div>
+            <div class="sample-job-chips">
+              <button type="button" class="chip chip-clickable" id="sampleJobPython">Sample: Python Backend</button>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <textarea id="jobDescriptionInput" rows="8" class="main-textarea" placeholder="Paste the complete job description here including required technical skills, experience levels, and responsibilities..."></textarea>
+            <div class="textarea-meta">
+              <span id="jobCharCount">0 characters</span>
+              <span class="hint-text">Semantically cross-referenced against candidate resume</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Action Button Area -->
+      <div class="action-cta-bar">
+        <button id="analyzeBtn" class="btn btn-primary btn-lg">
+          <span class="btn-icon-sparkle">✨</span>
+          <span class="btn-text-main">ANALYZE MATCH</span>
+        </button>
+        <button id="loadDemoBtn" class="btn btn-glass btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          Load Demo & Test Run
+        </button>
+      </div>
+
+      <!-- Loading State Overlay / Card -->
+      <div id="analysisLoading" class="loading-panel glass-card hidden">
+        <div class="spinner-agentic">
+          <div class="spinner-ring"></div>
+          <div class="spinner-core">🤖</div>
+        </div>
+        <h3 class="loading-title">AI Agent is analyzing your profile...</h3>
+        <p id="loadingStatusStep" class="loading-step-text">Parsing document structure and extracting verified competencies...</p>
+        <div class="progress-bar-wrap">
+          <div id="loadingProgressBar" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <!-- Toast / Notification Banner -->
+      <div id="notificationBanner" class="notification-banner hidden">
+        <span id="notificationIcon">⚠️</span>
+        <span id="notificationMessage">Message</span>
+        <button type="button" id="closeNotificationBtn" class="btn-icon">✕</button>
+      </div>
+
+      <!-- ================================================================
+           RESULTS DASHBOARD
+           ================================================================ -->
+      <div id="resultsDashboard" class="results-container hidden">
+
+        <!-- Result Banner Bar -->
+        <div class="results-header-banner glass-card">
+          <div class="dossier-meta">
+            <span class="chip chip-blue" id="resCandidateName">Candidate: Alex Morgan</span>
+            <span class="chip chip-purple" id="resJobTitle">Role: Python Backend Developer</span>
+            <span class="chip chip-engine" id="resEngineBadge">Engine: Live AI</span>
+          </div>
+          <div class="banner-actions">
+            <button id="printReportBtn" class="btn btn-secondary btn-sm" title="Print or save as PDF">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              Export Report
+            </button>
+          </div>
+        </div>
+
+        <!-- Section 6: OVERALL MATCH & CORE METRICS -->
+        <section class="metrics-grid">
+          
+          <!-- Large Circular Overall Score -->
+          <div class="card glass-card score-hero-card">
+            <h3 class="card-subtitle-small">OVERALL MATCH</h3>
+            <div class="circular-chart-wrapper">
+              <svg viewBox="0 0 120 120" class="circular-chart">
+                <path class="circle-bg" d="M18 60 a 42 42 0 0 1 84 0 a 42 42 0 0 1 -84 0" />
+                <path id="overallScoreCircle" class="circle-progress" stroke-dasharray="0, 100" d="M18 60 a 42 42 0 0 1 84 0 a 42 42 0 0 1 -84 0" />
+              </svg>
+              <div class="circle-inner-content">
+                <span id="overallScoreValue" class="score-number">87%</span>
+                <span id="matchLabelBadge" class="match-badge badge-strong">Strong Match</span>
+              </div>
+            </div>
+            <p class="scoring-formula-caption" id="scoringFormulaCaption">
+              Formula: 40% Skills + 30% Experience + 15% Education + 15% Relevance
+            </p>
+          </div>
+
+          <!-- Dimension Breakdown Cards -->
+          <div class="card glass-card dimensions-card">
+            <h3 class="card-subtitle-small">FIT BREAKDOWN</h3>
+            
+            <div class="dimension-row">
+              <div class="dimension-info">
+                <span class="dim-name">Skills Match</span>
+                <span class="dim-val" id="skillsScoreVal">91%</span>
+              </div>
+              <div class="meter-bar-track">
+                <div class="meter-bar-fill fill-cyan" id="skillsMeterBar" style="width: 91%;"></div>
+              </div>
+            </div>
+
+            <div class="dimension-row">
+              <div class="dimension-info">
+                <span class="dim-name">Experience Match</span>
+                <span class="dim-val" id="expScoreVal">82%</span>
+              </div>
+              <div class="meter-bar-track">
+                <div class="meter-bar-fill fill-purple" id="expMeterBar" style="width: 82%;"></div>
+              </div>
+            </div>
+
+            <div class="dimension-row">
+              <div class="dimension-info">
+                <span class="dim-name">Education Match</span>
+                <span class="dim-val" id="eduScoreVal">95%</span>
+              </div>
+              <div class="meter-bar-track">
+                <div class="meter-bar-fill fill-green" id="eduMeterBar" style="width: 95%;"></div>
+              </div>
+            </div>
+
+            <div class="dimension-row">
+              <div class="dimension-info">
+                <span class="dim-name">Job Relevance</span>
+                <span class="dim-val" id="relevanceScoreVal">85%</span>
+              </div>
+              <div class="meter-bar-track">
+                <div class="meter-bar-fill fill-amber" id="relevanceMeterBar" style="width: 85%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ATS Score Card -->
+          <div class="card glass-card ats-summary-card">
+            <h3 class="card-subtitle-small">ATS COMPATIBILITY</h3>
+            <div class="ats-gauge-row">
+              <div class="ats-score-display">
+                <span id="atsScoreValue" class="ats-big-num">84</span>
+                <span class="ats-scale">/100</span>
+              </div>
+              <div class="ats-verdict" id="atsVerdictText">ATS Ready</div>
+            </div>
+            <p class="ats-desc">Evaluates standard section hierarchy, contact readability, quantifiable achievement metrics, and keyword density.</p>
+          </div>
+
+        </section>
+
+        <!-- Section 9: AI EXPLANATION / "WHY THIS MATCH?" -->
+        <section class="card glass-card why-match-section">
+          <div class="section-title-row">
+            <span class="icon-bubble bubble-cyan">💡</span>
+            <h3>WHY THIS MATCH?</h3>
+            <span class="chip chip-verified">AI Agent Reasoning</span>
+          </div>
+          <div class="explanation-box">
+            <p id="aiSummaryText" class="explanation-quote">
+              The candidate demonstrates strong Python and backend development experience. Their Flask and REST API experience aligns with the role's backend requirements. However, the job specifically requires Django and Docker, which are not demonstrated in the resume.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 7 & 8: MATCHING SKILLS & SKILL GAPS -->
+        <section class="grid-2-col skills-section-grid">
+          
+          <!-- Matching Skills -->
+          <div class="card glass-card">
+            <div class="section-title-row">
+              <span class="icon-bubble bubble-green">✓</span>
+              <div>
+                <h3>MATCHING SKILLS</h3>
+                <span class="card-desc">Verified competencies present in resume</span>
+              </div>
+            </div>
+            <div id="matchingSkillsContainer" class="skills-tag-cloud">
+              <!-- Dynamically populated tags -->
+            </div>
+          </div>
+
+          <!-- Missing Skills / Gaps -->
+          <div class="card glass-card">
+            <div class="section-title-row">
+              <span class="icon-bubble bubble-amber">⚠</span>
+              <div>
+                <h3>SKILL GAPS</h3>
+                <span class="card-desc">Target requirements not demonstrated</span>
+              </div>
+            </div>
+            <div id="missingSkillsContainer" class="missing-skills-list">
+              <!-- Dynamically populated cards -->
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Section 10: CANDIDATE STRENGTHS -->
+        <section class="card glass-card">
+          <div class="section-title-row">
+            <span class="icon-bubble bubble-blue">★</span>
+            <h3>TOP CANDIDATE STRENGTHS</h3>
+          </div>
+          <ul id="strengthsList" class="strengths-checklist">
+            <!-- Dynamically populated list -->
+          </ul>
+        </section>
+
+        <!-- Section 11: SKILL GAP VISUALIZATION -->
+        <section class="card glass-card">
+          <div class="section-title-row">
+            <span class="icon-bubble bubble-purple">📊</span>
+            <div>
+              <h3>SKILL GAP VISUALIZATION</h3>
+              <span class="card-desc">Quantitative comparison of candidate evidence against role expectations</span>
+            </div>
+          </div>
+          <div class="skill-gap-table" id="skillGapTableContainer">
+            <!-- Dynamically populated progress rows -->
+          </div>
+        </section>
+
+        <!-- Section 12: CAREER ROADMAP -->
+        <section class="card glass-card roadmap-section">
+          <div class="section-title-row">
+            <span class="icon-bubble bubble-cyan">🚀</span>
+            <div>
+              <h3>PERSONALIZED CAREER ROADMAP</h3>
+              <span class="card-desc">Actionable project milestones to bridge identified gaps</span>
+            </div>
+          </div>
+          <div id="roadmapContainer" class="roadmap-timeline">
+            <!-- Dynamically populated step cards -->
+          </div>
+        </section>
+
+        <!-- Section 13: ATS DETAILED AUDIT -->
+        <section class="card glass-card ats-audit-section">
+          <div class="section-title-row">
+            <span class="icon-bubble bubble-green">🎯</span>
+            <div>
+              <h3>ATS COMPATIBILITY AUDIT</h3>
+              <span class="card-desc">Automated system parsing & keyword optimization</span>
+            </div>
+          </div>
+
+          <div class="grid-2-col ats-feedback-grid">
+            <div class="ats-feedback-card feedback-positive">
+              <h4>✓ Resume Strengths</h4>
+              <ul id="atsStrengthsList" class="feedback-bullet-list">
+                <!-- Populated dynamically -->
+              </ul>
+            </div>
+            <div class="ats-feedback-card feedback-warning">
+              <h4>⚠ Recommended Improvements</h4>
+              <ul id="atsImprovementsList" class="feedback-bullet-list">
+                <!-- Populated dynamically -->
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 14: INTERVIEW PREPARATION -->
+        <section class="card glass-card interview-section">
+          <div class="interview-header-row">
+            <div class="section-title-row">
+              <span class="icon-bubble bubble-purple">🎤</span>
+              <div>
+                <h3>INTERVIEW PREPARATION AGENT</h3>
+                <span class="card-desc">Custom interview questions generated strictly from your resume & target role gaps</span>
+              </div>
+            </div>
+            <button id="refreshInterviewBtn" class="btn btn-secondary btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              Regenerate Questions
+            </button>
+          </div>
+
+          <!-- Category filter tabs -->
+          <div class="interview-tabs">
+            <button class="interview-tab active" data-category="technical">Technical</button>
+            <button class="interview-tab" data-category="project">Project Experience</button>
+            <button class="interview-tab" data-category="job_specific">Target Job Specific</button>
+            <button class="interview-tab" data-category="behavioral">Behavioral</button>
+          </div>
+
+          <!-- Questions container -->
+          <div id="interviewQuestionsContainer" class="questions-accordion">
+            <!-- Dynamically populated questions -->
+          </div>
+        </section>
+
+        <!-- Section 16: RESPONSIBLE AI -->
+        <section class="responsible-ai-banner glass-panel-sm">
+          <div class="resp-icon">⚖️</div>
+          <div class="resp-text">
+            <strong>RESPONSIBLE AI EVALUATION POLICY</strong>
+            <p>Candidate evaluation strictly focuses on job-relevant qualifications: verified technical skills, hands-on project accomplishments, demonstrated work experience, and educational background. The system deliberately excludes non-job-relevant demographic attributes to ensure fair, unbiased analysis.</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- MAIN TAB 2: RECRUITER BATCH MODE -->
+    <section id="recruiterModeSection" class="tab-content">
+      <div class="card glass-card">
+        <div class="card-header">
+          <div class="section-title-row">
+            <span class="icon-bubble bubble-purple">👥</span>
+            <div>
+              <h2>Recruiter Candidate Ranking Hub</h2>
+              <span class="card-desc">Upload multiple candidate resumes to compare and rank against one job description</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="recruiter-controls-grid">
+            <div class="recruiter-input-block">
+              <label class="input-label">1. Job Description for Candidate Cohort</label>
+              <textarea id="recruiterJobInput" rows="5" class="main-textarea" placeholder="Paste the job requirements for the role you are recruiting for..."></textarea>
+            </div>
+
+            <div class="recruiter-input-block">
+              <label class="input-label">2. Candidate Resumes (Multiple Files)</label>
+              <div class="dropzone" id="recruiterDropzone">
+                <input type="file" id="recruiterFilesInput" multiple accept=".pdf,.docx,.txt" class="file-input-hidden">
+                <div class="dropzone-content">
+                  <div class="dropzone-icon">📁</div>
+                  <p class="primary-prompt"><span class="link-styled">Upload multiple resumes</span> (.pdf, .docx)</p>
+                  <p class="secondary-prompt" id="recruiterFileCountNotice">Or leave empty to rank built-in candidate cohort</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-cta-bar">
+            <button id="runRecruiterBatchBtn" class="btn btn-primary btn-lg">
+              <span>🚀</span>
+              <span>RANK CANDIDATES</span>
+            </button>
+            <button id="loadRecruiterDemoBtn" class="btn btn-glass btn-lg">
+              <span>⚡</span>
+              <span>Load Sample Candidate Cohort</span>
+            </button>
+          </div>
+
+          <!-- Recruiter Loading State -->
+          <div id="recruiterLoading" class="loading-panel glass-card hidden">
+            <div class="spinner-ring"></div>
+            <p class="loading-title">Recruiter Agent is batch-scoring candidates...</p>
+          </div>
+
+          <!-- Recruiter Results Leaderboard -->
+          <div id="recruiterResultsContainer" class="recruiter-results-wrap hidden">
+            <div class="leaderboard-header">
+              <h3>Ranked Candidate Cohort (<span id="totalRankedCount">0</span> Candidates)</h3>
+              <span class="hint-text">Click any candidate card to inspect their complete intelligence breakdown</span>
+            </div>
+
+            <div class="table-responsive">
+              <table class="recruiter-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Candidate</th>
+                    <th>Overall Match</th>
+                    <th>Skills Match</th>
+                    <th>Top Strengths</th>
+                    <th>Critical Gaps</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="recruiterLeaderboardBody">
+                  <!-- Dynamically populated candidate rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p><strong>HIREMIND AI</strong> — Agentic Resume Intelligence & Career Matching Platform</p>
+      <p class="footer-sub">Crafted for hackathons with Python, Flask, Semantic Intelligence & Glassmorphism Design.</p>
+    </footer>
+
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

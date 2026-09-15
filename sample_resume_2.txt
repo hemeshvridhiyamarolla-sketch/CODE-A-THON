@@ -1,0 +1,28 @@
+Jordan Rivera
+Email: jordan.rivera@techcloud.io | Phone: (555) 918-4421
+GitHub: github.com/jrivera-cloud | LinkedIn: linkedin.com/in/jordanrivera-dev
+
+PROFESSIONAL SUMMARY
+Senior Backend Engineer with 5+ years of experience specializing in Python, Django, Docker microservices, and AWS cloud infrastructure. Proven track record of scaling high-throughput distributed APIs, automating CI/CD pipelines, and mentoring junior engineers.
+
+TECHNICAL SKILLS
+- Languages: Python, Go, SQL, Bash
+- Frameworks: Django, Django REST Framework, FastAPI, Flask
+- Cloud & DevOps: AWS (ECS, EC2, S3, RDS, Lambda), Docker, Docker Compose, Kubernetes, Terraform, GitHub Actions
+- Databases: PostgreSQL, Redis, DynamoDB
+- Core: Distributed Systems, REST APIs, Microservices, Agile/Scrum
+
+WORK EXPERIENCE
+Senior Backend Engineer | CloudScale Tech
+2022 – Present
+- Architected enterprise Django microservices processing 4M+ daily API requests with 99.98% uptime.
+- Containerized 12 backend services using Docker and orchestrated multi-region deployments on AWS ECS.
+- Cut AWS infrastructure costs by 28% through database query optimization and auto-scaling policies.
+
+Backend Developer | DataStream Labs
+2019 – 2022
+- Developed RESTful APIs using Python, Django, and PostgreSQL.
+- Implemented automated CI/CD pipelines with GitHub Actions, reducing deployment cycle times by 45%.
+
+EDUCATION
+B.S. in Computer Science | University of Washington
